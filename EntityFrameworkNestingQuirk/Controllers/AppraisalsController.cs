@@ -55,7 +55,10 @@ namespace EntityFrameworkNestingQuirk.Controllers
             _logger.LogInformation("Appraisal Query Run: Staff {id} has manager set to {managerId} - run completed", staff.Id, staff.ManagerId);
 
             if (appraisal != null)
+            {
+                _logger.LogInformation("Appraisal->Staff->2ndManager->Manager={id} (We should NOT have this)", appraisal.Staff.SecondaryManager?.ManagerId);
                 return (true, appraisal);
+            }
 
             return (false, null);
         }

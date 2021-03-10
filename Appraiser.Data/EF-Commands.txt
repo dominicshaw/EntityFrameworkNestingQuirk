@@ -1,3 +1,5 @@
 ﻿dotnet ef migrations add Add-Seed-Data --project Appraiser.Data --startup-project EntityFrameworkNestingQuirk
 
 dotnet ef database update --project Appraiser.Data --startup-project EntityFrameworkNestingQuirk
+
+http://localhost:5000/Appraisals/1
