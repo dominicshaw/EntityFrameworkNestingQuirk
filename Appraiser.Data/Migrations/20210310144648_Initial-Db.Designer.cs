@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Appraiser.Data.Migrations
 {
     [DbContext(typeof(AppraiserContext))]
-    [Migration("20210310144346_Simplify-Data-3")]
-    partial class SimplifyData3
+    [Migration("20210310144648_Initial-Db")]
+    partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
