@@ -43,7 +43,9 @@ namespace EntityFrameworkNestingQuirk.Controllers
 
         private async Task<(bool Found, Appraisal Appraisal)> Get(int id)
         {
-            var staff = await _context.Staff.FindAsync(491);
+            var staff = await _context.Staff.FindAsync(3);
+
+            _logger.LogInformation("Staff {id} has manager set to {managerId} - running query for appraisal", staff.Id, staff.ManagerId);
 
             var appraisal =
                 await _context.Appraisals
@@ -52,7 +54,7 @@ namespace EntityFrameworkNestingQuirk.Controllers
                     .Where(ap => ap.Id == id)
                     .SingleOrDefaultAsync();
 
-            _logger.LogDebug("Found appraisal id {id} for '{username}'.", appraisal?.Id, _username);
+            _logger.LogInformation("Query complete: staff {id} has manager set to {managerId}", staff.Id, staff.ManagerId);
 
             if (appraisal != null)
                 return (true, appraisal);

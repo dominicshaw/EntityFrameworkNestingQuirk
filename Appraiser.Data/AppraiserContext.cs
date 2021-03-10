@@ -26,6 +26,8 @@ namespace Appraiser.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.EnableSensitiveDataLogging();
+
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Data Source=ROMHSQL01\\TEST01;Initial Catalog=EntityFrameworkNestingQuirk;Trusted_Connection=True;App=EntityFrameworkNestingQuirk;");
@@ -65,9 +67,12 @@ namespace Appraiser.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             builder.Entity<Staff>().HasData(
-                new Staff { Id = 2, Email = "mgr1@company.com", Logon = "mgr1", Name = "Manager 1" },
-                new Staff { Id = 3, Email = "mgr2@company.com", Logon = "mgr2", Name = "Manager 2", ManagerId = 2 },
-                new Staff { Id = 1, Email = "emp@company.com", Logon = "emp", Name = "Employee", ManagerId = 2, SecondaryManagerId = 3 }
+                new Staff { Id = 1, Email = "mgr1@company.com", Logon = "mgr1", Name = "Manager 1" }
+            );
+
+            builder.Entity<Staff>().HasData(
+                new Staff { Id = 2, Email = "mgr2@company.com", Logon = "mgr2", Name = "Manager 2", ManagerId = 1 },
+                new Staff { Id = 3, Email = "emp@company.com", Logon = "emp", Name = "Employee", ManagerId = 1, SecondaryManagerId = 2 }
             );
 
             builder.Entity<Appraisal>().HasData(new Appraisal()
@@ -75,7 +80,7 @@ namespace Appraiser.Data
                 Id = 1,
                 PeriodStart = new DateTimeOffset(new DateTime(2020, 1, 1).ToUniversalTime()),
                 PeriodEnd = new DateTimeOffset(new DateTime(2020, 12, 31).ToUniversalTime()),
-                StaffId = 1
+                StaffId = 3
             });
         }
     }
