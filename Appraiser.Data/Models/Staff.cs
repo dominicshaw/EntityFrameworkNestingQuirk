@@ -17,8 +17,5 @@ namespace Appraiser.Data.Models
 
         public int? SecondaryManagerId { get; set; }
         public Staff SecondaryManager { get; set; }
-
-        public bool IsFitAndProper { get; set; }
-        public bool IsSuperUser { get; set; }
     }
 }
