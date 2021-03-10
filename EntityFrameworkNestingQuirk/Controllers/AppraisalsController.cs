@@ -35,7 +35,7 @@ namespace EntityFrameworkNestingQuirk.Controllers
             }
             finally
             {
-                _logger.LogInformation("Got weather");
+                _logger.LogInformation("GetAppraisal Complete");
             }
         }
 
