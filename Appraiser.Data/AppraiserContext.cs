@@ -9,8 +9,6 @@ namespace Appraiser.Data
         public DbSet<Appraisal> Appraisals { get; set; }
         public DbSet<Staff> Staff { get; set; }
 
-        public DbSet<Change> Changes { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.EnableSensitiveDataLogging();
@@ -23,11 +21,6 @@ namespace Appraiser.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Appraisal>()
-                .HasIndex(u => new { u.StaffId, u.PeriodStart, u.Deleted })
-                .IsUnique();
-
-            builder.Entity<Staff>().HasKey(s => s.Id);
             builder.Entity<Staff>().HasIndex(e => e.ManagerId).IsUnique(false);
             builder.Entity<Staff>()
                 .HasOne(a => a.Manager)
@@ -35,7 +28,7 @@ namespace Appraiser.Data
                 .HasForeignKey<Staff>(s => s.ManagerId)
                 .IsRequired(false)
                 .OnDelete(DeleteBehavior.NoAction);
-
+            
             builder.Entity<Staff>().HasIndex(e => e.SecondaryManagerId).IsUnique(false);
             builder.Entity<Staff>()
                 .HasOne(a => a.SecondaryManager)
