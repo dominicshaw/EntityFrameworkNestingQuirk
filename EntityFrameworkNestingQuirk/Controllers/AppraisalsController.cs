@@ -14,13 +14,11 @@ namespace EntityFrameworkNestingQuirk.Controllers
     {
         private readonly ILogger<AppraisalsController> _logger;
         private readonly AppraiserContext _context;
-        private readonly string _username;
 
         public AppraisalsController(ILogger<AppraisalsController> logger, AppraiserContext context)
         {
             _logger = logger;
             _context = context;
-            _username = "Spoofed";
         }
 
 
