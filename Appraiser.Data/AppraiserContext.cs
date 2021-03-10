@@ -30,7 +30,7 @@ namespace Appraiser.Data
 
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=ROMHSQL01\\TEST01;Initial Catalog=EntityFrameworkNestingQuirk;Trusted_Connection=True;App=EntityFrameworkNestingQuirk;");
+                optionsBuilder.UseSqlServer("Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=EntityFrameworkNestingQuirk;Trusted_Connection=True;App=EntityFrameworkNestingQuirk;");
             }
         }
 
