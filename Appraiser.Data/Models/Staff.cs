@@ -5,7 +5,6 @@ namespace Appraiser.Data.Models
 {
     public class Staff
     {
-        [Key]
         public int Id { get; set; }
         [MaxLength(100)]
         public string Logon { get; set; }
@@ -22,7 +21,5 @@ namespace Appraiser.Data.Models
 
         public bool IsFitAndProper { get; set; }
         public bool IsSuperUser { get; set; }
-
-        public List<Impersonation> Impersonates { get; set; }
     }
 }

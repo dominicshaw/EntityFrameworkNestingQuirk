@@ -1,4 +1,4 @@
-﻿dotnet ef migrations add Add-Seed-Data --project Appraiser.Data --startup-project EntityFrameworkNestingQuirk
+﻿dotnet ef migrations add Simplify-Data --project Appraiser.Data --startup-project EntityFrameworkNestingQuirk
 
 dotnet ef database update --project Appraiser.Data --startup-project EntityFrameworkNestingQuirk
 

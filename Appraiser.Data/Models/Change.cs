@@ -5,7 +5,6 @@ namespace Appraiser.Data.Models
 {
     public class Change
     {
-        [Key]
         public int Id { get; set; }
 
         public int? StaffId { get; set; }
